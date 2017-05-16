@@ -25,7 +25,9 @@
             android:theme="@style/Transparent" />
         <activity android:name=".custom.ShareElementActivity" />
         <activity android:name=".ele.EleMainActivity" />
-        <activity android:name=".ele.EleSearchActivity"/>
+        <activity android:name=".ele.EleSearchActivity"
+            android:theme="@style/Transparent"
+            />
     </application>
 
 </manifest>

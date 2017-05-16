@@ -17,20 +17,21 @@
             android:text="广东省广州市番禺区"
             android:textColor="#fff"
             android:textSize="16sp" />
-        <TextView
+        <RelativeLayout
             android:id="@+id/tv_search_bg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:background="@drawable/ele_search_bg"
-            android:gravity="center"
-            android:padding="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:text="搜索商家、商品名称" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/input"
+                android:padding="10dp"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="搜索商家、商品名称" />
+        </RelativeLayout>
         <TextView
             android:gravity="center"
             android:textColor="#fff"
