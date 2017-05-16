@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Button
+        android:onClick="begin"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:text="开始动画" />
+    <!--这个View用来做动画的父布局-->
+    <FrameLayout
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/scene1"></include>
+    </FrameLayout>
+</LinearLayout>
