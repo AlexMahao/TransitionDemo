@@ -5,6 +5,8 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -55,6 +57,24 @@ public class EleSearchActivity extends AppCompatActivity {
         mEditText = (EditText) findViewById(R.id.input);
 
 
+       /* mSearchBGTxt.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                mSearchBGTxt.getViewTreeObserver().removeOnPreDrawListener(this);
+                prepareScene();
+                return true;
+            }
+        });*/
+/*
+        mSearchBGTxt.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
+            @Override
+            public void onDraw() {
+                mSearchBGTxt.getViewTreeObserver().removeOnDrawListener(this);
+                prepareScene();
+                //performEnterAnimation();
+            }
+        });*/
+
 
         mSearchBGTxt.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 
@@ -66,13 +86,29 @@ public class EleSearchActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
+  /*  @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+
+        EleMainActivity.activity.hide();
+    }*/
+
+    @Override
+    public void onEnterAnimationComplete() {
+        super.onEnterAnimationComplete();
+        EleMainActivity.activity.hide();
+
+    }
 
     /**
      * 准备动画
      */
     private void prepareScene() {
+        final FrameLayout.LayoutParams paramsEdit = (FrameLayout.LayoutParams) mSearchBGTxt.getLayoutParams();
+        paramsEdit.setMargins(0, 0, 0, 0);
 
         Bundle extra = getIntent().getBundleExtra(ShareElementActivity.VIEW_INFO_EXTRA);
         originViewLeft = extra.getInt("left");
@@ -80,10 +116,11 @@ public class EleSearchActivity extends AppCompatActivity {
         int[] screenLocation = new int[2];
         mEditText.getLocationOnScreen(screenLocation);
         //移动到起始view位置
-        deltaX = originViewLeft - screenLocation[0];
-        mEditText.setTranslationX(deltaX); // x 位置
+        deltaX = originViewLeft - screenLocation[0] + (int)dp2px(35);
+        mEditText.setTranslationX(deltaX); // x 位置*/
 
-        EleMainActivity.activity.hide();
+
+        //EleMainActivity.activity.hide();
 
     }
 
@@ -100,7 +137,7 @@ public class EleSearchActivity extends AppCompatActivity {
             }
         });
 
-        ObjectAnimator contentAnim = ObjectAnimator.ofArgb(mFrameView,"backgroundColor",Color.parseColor("#000096FF"), Color.parseColor("#FF0096FF"));
+        ObjectAnimator contentAnim = ObjectAnimator.ofArgb(mFrameView, "backgroundColor", Color.parseColor("#000096FF"), Color.parseColor("#FF0096FF"));
 
 
         final FrameLayout.LayoutParams paramsEdit = (FrameLayout.LayoutParams) mSearchBGTxt.getLayoutParams();
@@ -125,15 +162,15 @@ public class EleSearchActivity extends AppCompatActivity {
             }
         });
 
-        alphaVa.setDuration(500);
-        translateVa.setDuration(500);
-        scaleVa.setDuration(500);
-        contentAnim.setDuration(500);
+        alphaVa.setDuration(300);
+        translateVa.setDuration(300);
+        scaleVa.setDuration(300);
+        contentAnim.setDuration(300);
 
 
         //执行动画
         mEditText.animate()
-                .setDuration(500)
+                .setDuration(300)
                 .setInterpolator(new LinearInterpolator())
                 .translationX(0)
                 .start();
@@ -174,8 +211,7 @@ public class EleSearchActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
             }
         });
-        ObjectAnimator contentAnim = ObjectAnimator.ofArgb(mFrameView,"backgroundColor",Color.parseColor("#FF0096FF"), Color.parseColor("#000096FF"));
-
+        ObjectAnimator contentAnim = ObjectAnimator.ofArgb(mFrameView, "backgroundColor", Color.parseColor("#FF0096FF"), Color.parseColor("#000096FF"));
 
 
         final FrameLayout.LayoutParams paramsEdit = (FrameLayout.LayoutParams) mSearchBGTxt.getLayoutParams();
@@ -202,15 +238,15 @@ public class EleSearchActivity extends AppCompatActivity {
 
         //执行动画
         mEditText.animate()
-                .setDuration(500)
+                .setDuration(300)
                 .setInterpolator(new LinearInterpolator())
                 .translationX(deltaX)
                 .start();
 
-        alphaVa.setDuration(500);
-        translateVa.setDuration(500);
-        scaleVa.setDuration(500);
-        contentAnim.setDuration(500);
+        alphaVa.setDuration(300);
+        translateVa.setDuration(300);
+        scaleVa.setDuration(300);
+        contentAnim.setDuration(300);
 
         alphaVa.start();
         translateVa.start();
