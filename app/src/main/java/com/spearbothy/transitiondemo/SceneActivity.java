@@ -8,7 +8,7 @@ import android.transition.TransitionManager;
 import android.view.View;
 import android.widget.FrameLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class SceneActivity extends AppCompatActivity {
 
     private FrameLayout rootView;
 

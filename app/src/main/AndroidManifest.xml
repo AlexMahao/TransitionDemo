@@ -28,6 +28,8 @@
         <activity android:name=".ele.EleSearchActivity"
             android:theme="@style/Transparent"
             />
+        <activity android:name=".transition.TransitionExampleActivity"/>
+        <activity android:name=".SceneActivity"/>
     </application>
 
 </manifest>

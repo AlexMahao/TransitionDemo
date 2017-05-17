@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@color/color_orange"
-        android:transitionName="share"></View>
+        android:transitionName="share"/>
 
     <TextView
         android:id="@+id/tv_transition_type"

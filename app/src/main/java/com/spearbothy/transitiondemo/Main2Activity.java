@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.spearbothy.transitiondemo.custom.ShareElementActivity;
 import com.spearbothy.transitiondemo.ele.EleMainActivity;
+import com.spearbothy.transitiondemo.transition.TransitionExampleActivity;
 
 /**
  * Created by mahao on 17-5-15.
@@ -32,14 +33,15 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.tv_share_elements).setOnClickListener(this);
         findViewById(R.id.tv_reveal).setOnClickListener(this);
         findViewById(R.id.tv_custom_share).setOnClickListener(this);
+        findViewById(R.id.tv_transition_example).setOnClickListener(this);
         findViewById(R.id.tv_ele_search).setOnClickListener(this);
+        findViewById(R.id.tv_scene).setOnClickListener(this);
 
         mIntent = new Intent();
-        Transition transition = TransitionInflater.from(this).inflateTransition(R.transition.slide);
-        transition.addTarget(R.id.rootView);
         // 退出动画
-        getWindow().setExitTransition(transition);
+        //getWindow().setExitTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));
     }
+
 
     @Override
     public void onClick(View v) {
@@ -74,7 +76,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 mIntent.setClass(this, RevealActivity.class);
                 ActivityOptions transitionActivityOptions2 = ActivityOptions.makeSceneTransitionAnimation(this, findViewById(R.id.img_reveal_share), "share");
                 //5.0以下兼容
-                //ActivityOptionsCompat activityOptionsCompat2 = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this, findViewById(R.id.img_reveal_share), "share");
+                //ActivityOptionsCompat activityOptionsCompat2 = ActivityOptionsCompat.makeSceneTransitionAnimation(SceneActivity.this, findViewById(R.id.img_reveal_share), "share");
                 startActivity(mIntent, transitionActivityOptions2.toBundle());
                 break;
             case R.id.tv_custom_share:
@@ -83,6 +85,12 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.tv_ele_search:
                 startActivity(new Intent(this, EleMainActivity.class));
+                break;
+            case R.id.tv_transition_example:
+                startActivity(new Intent(this, TransitionExampleActivity.class));
+                break;
+            case R.id.tv_scene:
+                startActivity(new Intent(this, SceneActivity.class));
                 break;
         }
     }
