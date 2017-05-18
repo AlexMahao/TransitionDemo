@@ -52,7 +52,6 @@ public class MyTransition extends Transition {
         if (startValues == null || endValues == null) {
             return null;
         }
-
         final View endView = endValues.view;
 
         final int startTop = (int) startValues.values.get(TOP);
@@ -99,4 +98,12 @@ public class MyTransition extends Transition {
 
         return set;
     }
+
+    @Override
+    public String[] getTransitionProperties() {
+        return new String[]{
+                TOP, HEIGHT
+        };
+    }
+
 }

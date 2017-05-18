@@ -29,7 +29,7 @@
             android:theme="@style/Transparent"
             />
         <activity android:name=".transition.TransitionExampleActivity"/>
-        <activity android:name=".SceneActivity"/>
+        <activity android:name=".transition.SceneActivity"/>
     </application>
 
 </manifest>

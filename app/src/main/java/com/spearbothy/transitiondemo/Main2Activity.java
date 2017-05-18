@@ -4,15 +4,13 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
 import android.util.Pair;
 import android.view.View;
 
 import com.spearbothy.transitiondemo.custom.ShareElementActivity;
 import com.spearbothy.transitiondemo.ele.EleMainActivity;
+import com.spearbothy.transitiondemo.transition.SceneActivity;
 import com.spearbothy.transitiondemo.transition.TransitionExampleActivity;
 
 /**

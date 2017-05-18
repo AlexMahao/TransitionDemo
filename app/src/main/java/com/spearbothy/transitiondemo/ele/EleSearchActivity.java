@@ -56,28 +56,7 @@ public class EleSearchActivity extends AppCompatActivity {
         mFrameView = findViewById(R.id.frame_bg);
         mEditText = (EditText) findViewById(R.id.input);
 
-
-       /* mSearchBGTxt.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            @Override
-            public boolean onPreDraw() {
-                mSearchBGTxt.getViewTreeObserver().removeOnPreDrawListener(this);
-                prepareScene();
-                return true;
-            }
-        });*/
-/*
-        mSearchBGTxt.getViewTreeObserver().addOnDrawListener(new ViewTreeObserver.OnDrawListener() {
-            @Override
-            public void onDraw() {
-                mSearchBGTxt.getViewTreeObserver().removeOnDrawListener(this);
-                prepareScene();
-                //performEnterAnimation();
-            }
-        });*/
-
-
         mSearchBGTxt.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-
             @Override
             public void onGlobalLayout() {
                 prepareScene();
@@ -85,22 +64,12 @@ public class EleSearchActivity extends AppCompatActivity {
                 performEnterAnimation();
             }
         });
-
-
     }
-
-  /*  @Override
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-
-        EleMainActivity.activity.hide();
-    }*/
 
     @Override
     public void onEnterAnimationComplete() {
         super.onEnterAnimationComplete();
         EleMainActivity.activity.hide();
-
     }
 
     /**
@@ -109,18 +78,13 @@ public class EleSearchActivity extends AppCompatActivity {
     private void prepareScene() {
         final FrameLayout.LayoutParams paramsEdit = (FrameLayout.LayoutParams) mSearchBGTxt.getLayoutParams();
         paramsEdit.setMargins(0, 0, 0, 0);
-
         Bundle extra = getIntent().getBundleExtra(ShareElementActivity.VIEW_INFO_EXTRA);
         originViewLeft = extra.getInt("left");
-
         int[] screenLocation = new int[2];
         mEditText.getLocationOnScreen(screenLocation);
         //移动到起始view位置
-        deltaX = originViewLeft - screenLocation[0] + (int)dp2px(35);
+        deltaX = originViewLeft - screenLocation[0] + (int) dp2px(35);
         mEditText.setTranslationX(deltaX); // x 位置*/
-
-
-        //EleMainActivity.activity.hide();
 
     }
 
@@ -133,13 +97,10 @@ public class EleSearchActivity extends AppCompatActivity {
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 params.height = (int) valueAnimator.getAnimatedValue();
                 mFrameView.setLayoutParams(params);
-                //EleMainActivity.activity.hide();
             }
         });
 
         ObjectAnimator contentAnim = ObjectAnimator.ofArgb(mFrameView, "backgroundColor", Color.parseColor("#000096FF"), Color.parseColor("#FF0096FF"));
-
-
         final FrameLayout.LayoutParams paramsEdit = (FrameLayout.LayoutParams) mSearchBGTxt.getLayoutParams();
         //
         ValueAnimator scaleVa = ValueAnimator.ofFloat(0, 1);

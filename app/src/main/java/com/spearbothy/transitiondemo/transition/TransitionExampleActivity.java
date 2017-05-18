@@ -45,7 +45,6 @@ public class TransitionExampleActivity extends AppCompatActivity implements View
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transition_example);
-
         mRootView = (GridLayout) findViewById(R.id.root_view);
 
         mRootView.setOnClickListener(this);
@@ -59,6 +58,7 @@ public class TransitionExampleActivity extends AppCompatActivity implements View
     @Override
     public void onClick(View v) {
         TransitionManager.beginDelayedTransition(mRootView, new Explode());
+
         toggleVisibility(mRedBoxView, mBlueBoxView, mBlackBoxView, mYellowBoxView);
     }
 
@@ -68,22 +68,4 @@ public class TransitionExampleActivity extends AppCompatActivity implements View
             view.setVisibility(isVisible ? View.INVISIBLE : View.VISIBLE);
         }
     }
-
-
-    public void fade(View view) {
-        TransitionManager.beginDelayedTransition(mRootView, new Fade());
-    }
-
-    public void slide(View view) {
-        TransitionManager.beginDelayedTransition(mRootView, new Slide());
-    }
-
-    public void explode(View view) {
-        TransitionManager.beginDelayedTransition(mRootView, new Explode());
-    }
-
-    public void end(View view) {
-        TransitionManager.beginDelayedTransition(mRootView, null);
-    }
-
 }
