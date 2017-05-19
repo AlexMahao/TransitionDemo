@@ -10,6 +10,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Transition;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -56,21 +57,28 @@ public class EleSearchActivity extends AppCompatActivity {
         mFrameView = findViewById(R.id.frame_bg);
         mEditText = (EditText) findViewById(R.id.input);
 
-        mSearchBGTxt.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+
+        mEditText.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
+                mEditText.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                //EleMainActivity.activity.hide();
                 prepareScene();
-                mSearchBGTxt.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
                 performEnterAnimation();
             }
         });
+
+        //getWindow().getDecorView().getViewTreeObserver().
     }
 
-    @Override
+   /* @Override
     public void onEnterAnimationComplete() {
         super.onEnterAnimationComplete();
         EleMainActivity.activity.hide();
-    }
+    }*/
+
 
     /**
      * 准备动画
@@ -85,6 +93,8 @@ public class EleSearchActivity extends AppCompatActivity {
         //移动到起始view位置
         deltaX = originViewLeft - screenLocation[0] + (int) dp2px(35);
         mEditText.setTranslationX(deltaX); // x 位置*/
+
+       // mFrameView.setBackgroundColor(Color.parseColor("#000096FF"));
 
     }
 
@@ -117,6 +127,9 @@ public class EleSearchActivity extends AppCompatActivity {
         alphaVa.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                if (((Float) valueAnimator.getAnimatedValue())>0f){
+                    EleMainActivity.activity.hide();
+                }
                 mContentFrame.setAlpha((Float) valueAnimator.getAnimatedValue());
                 mSearchTxt.setAlpha((Float) valueAnimator.getAnimatedValue());
                 mArrowImg.setAlpha((Float) valueAnimator.getAnimatedValue());

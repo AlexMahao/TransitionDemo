@@ -49,9 +49,9 @@ public class EleMainActivity extends AppCompatActivity {
         return b;
     }
 
-
     public void hide() {
-        mSearchBgVIew.setVisibility(View.INVISIBLE);
+//        mSearchBgVIew.setBackground(null);
+        mSearchBgVIew.setVisibility(View.GONE);
     }
 
     public void show() {

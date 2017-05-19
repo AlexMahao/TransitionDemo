@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.spearbothy.transitiondemo.custom.ShareElementActivity;
 import com.spearbothy.transitiondemo.ele.EleMainActivity;
+import com.spearbothy.transitiondemo.transition.ColorTransitionActivity;
 import com.spearbothy.transitiondemo.transition.SceneActivity;
 import com.spearbothy.transitiondemo.transition.TransitionExampleActivity;
 
@@ -34,6 +35,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.tv_transition_example).setOnClickListener(this);
         findViewById(R.id.tv_ele_search).setOnClickListener(this);
         findViewById(R.id.tv_scene).setOnClickListener(this);
+        findViewById(R.id.tv_transition_color).setOnClickListener(this);
 
         mIntent = new Intent();
         // 退出动画
@@ -89,6 +91,9 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.tv_scene:
                 startActivity(new Intent(this, SceneActivity.class));
+                break;
+            case R.id.tv_transition_color:
+                startActivity(new Intent(this, ColorTransitionActivity.class));
                 break;
         }
     }

@@ -42,6 +42,20 @@ import com.spearbothy.transitiondemo.R;
  *
  *      系统会保存一个当前视图树状态的场景，然后我们直接修改视图树，在下一次绘制时，系统会自动对比之前保存的视图树，然后执行一步动画。
  *
+ *
+ *  控件匹配的规则
+ *
+ *        - Transition  中的匹配规则
+ *         private static final int[] DEFAULT_MATCH_ORDER = {
+                 MATCH_NAME,   // xml中 transitionName
+                 MATCH_INSTANCE,  //  具有相同的引用对象
+                 MATCH_ID,  // id
+                 MATCH_ITEM_ID, // ListView 的item id
+                 };
+ *
+ *
+ *
+ *
  */
 public class SceneActivity extends AppCompatActivity {
 

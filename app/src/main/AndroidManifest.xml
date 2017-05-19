@@ -30,6 +30,7 @@
             />
         <activity android:name=".transition.TransitionExampleActivity"/>
         <activity android:name=".transition.SceneActivity"/>
+        <activity android:name=".transition.ColorTransitionActivity"/>
     </application>
 
 </manifest>
