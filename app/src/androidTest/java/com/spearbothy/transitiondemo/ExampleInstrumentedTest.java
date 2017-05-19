@@ -1,6 +1,7 @@
 package com.spearbothy.transitiondemo;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -16,11 +17,20 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
+
+    public static String url = "file:///android_asset/3123";
+
     @Test
     public void useAppContext() throws Exception {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("com.spearbothy.transitiondemo", appContext.getPackageName());
+    }
+
+    @Test
+    public void parserUri(){
+        Uri uri = Uri.parse(url);
+        System.out.println(uri.getHost());
     }
 }

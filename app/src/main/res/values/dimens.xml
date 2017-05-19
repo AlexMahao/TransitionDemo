@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header">200dp</dimen>
+    <dimen name="title">50dp</dimen>
+    <dimen name="tab">50dp</dimen>
+    <dimen name="header_offset">-40dp</dimen>
+</resources>
