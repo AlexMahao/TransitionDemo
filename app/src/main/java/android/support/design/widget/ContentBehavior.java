@@ -29,7 +29,7 @@ public class ContentBehavior extends HeaderScrollingViewBehavior {
     }
 
     private boolean isDependOn(View dependency) {
-        return  dependency != null && dependency.getId() == R.id.header;
+        return dependency != null && dependency.getId() == R.id.header;
     }
 
     @Override
@@ -41,11 +41,7 @@ public class ContentBehavior extends HeaderScrollingViewBehavior {
     @Override
     protected int getScrollRange(View v) {
         // 可滚动的偏移
-        if (isDependOn(v)) {
-            return Math.max(0, v.getMeasuredHeight()-getFinalHeight());
-        } else {
-            return super.getScrollRange(v);
-        }
+        return Math.max(0, v.getMeasuredHeight() - getFinalHeight());
     }
 
     private int getFinalHeight() {

@@ -2,4 +2,6 @@
     <string name="app_name">TransitionDemo</string>
     <string name="content_behavior">android.support.design.widget.ContentBehavior</string>
     <string name="header_behavior">android.support.design.widget.MyHeaderBehavior</string>
+    <string name="title_behavior">android.support.design.widget.TitleBehavior</string>
+    <string name="tab_behavior">android.support.design.widget.TabBehavior</string>
 </resources>

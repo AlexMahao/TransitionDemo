@@ -62,10 +62,6 @@ public class MyHeaderBehavior extends ViewOffsetBehavior {
         return false;
     }
 
-    @Override
-    public void onNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-        super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed);
-    }
 
     private int getHeaderOffsetRange() {
         // 头部可偏移的最大范围

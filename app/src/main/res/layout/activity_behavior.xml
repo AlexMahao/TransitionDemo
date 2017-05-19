@@ -6,22 +6,47 @@
 
     <FrameLayout
         android:id="@+id/header"
-
         android:layout_width="match_parent"
-        app:layout_behavior="@string/header_behavior"
         android:layout_height="wrap_content"
-        android:background="@color/color_blue">
+        android:background="@color/color_blue"
+        app:layout_behavior="@string/header_behavior">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/header"
             android:gravity="center"
+            android:text="Banner" />
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_purple"
+        app:layout_behavior="@string/title_behavior">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title"
+            android:gravity="center"
             android:text="标题" />
     </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/content"
-        app:layout_behavior="@string/content_behavior"
+    <FrameLayout
+        android:id="@+id/tab"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_behavior="@string/tab_behavior">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tab"
+            android:gravity="center"
+            android:text="tab" />
+    </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:background="#fff"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/content_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>
