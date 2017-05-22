@@ -34,23 +34,20 @@ public class ShareElementViewPager2Activity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_elements_viewpager);
-
+        // 查找控件
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
-
-        initImageView();
-
+        // 初始化显示的View集合
+        initViews();
+        // 初始化ViewPager
         MyAdapter adapter = new MyAdapter();
-
         mViewPager.setAdapter(adapter);
-
         int index = getIntent().getIntExtra("index", 0);
         mViewPager.setCurrentItem(index, false);
-
+        // 延时启动共享动画
         postponeEnterTransition();
-
-
+        // 当View加载完毕时，启动动画
         scheduleStartPostponedTransition(mImageViews.get(index));
-
+        // 设置监听，更新共享元素数据
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -72,6 +69,7 @@ public class ShareElementViewPager2Activity extends AppCompatActivity {
 
     @Override
     public void finishAfterTransition() {
+        // 更新共享元素数据。设置对应回调
         setSharedElementCallback(mImageViews.get(mViewPager.getCurrentItem()));
         super.finishAfterTransition();
     }
@@ -101,14 +99,14 @@ public class ShareElementViewPager2Activity extends AppCompatActivity {
                 });
     }
 
-    public void initImageView() {
+    public void initViews() {
         for (int i = 0; i < mColors.length; i++) {
-            View imageView = new ImageView(this);
+            View view = new ImageView(this);
             ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            imageView.setLayoutParams(params);
-            imageView.setBackgroundColor(Color.parseColor(mColors[i]));
-            ViewCompat.setTransitionName(imageView, "color_" + i);
-            mImageViews.add(imageView);
+            view.setLayoutParams(params);
+            view.setBackgroundColor(Color.parseColor(mColors[i]));
+            ViewCompat.setTransitionName(view, "color_" + i);
+            mImageViews.add(view);
         }
     }
 
@@ -130,7 +128,6 @@ public class ShareElementViewPager2Activity extends AppCompatActivity {
             container.addView(mImageViews.get(position));
             return mImageViews.get(position);
         }
-
 
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {

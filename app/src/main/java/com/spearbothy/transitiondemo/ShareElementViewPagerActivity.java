@@ -37,14 +37,13 @@ public class ShareElementViewPagerActivity extends AppCompatActivity implements 
         for (int i = 0; i < mRootView.getChildCount(); i++) {
             View view = mRootView.getChildAt(i);
             view.setBackgroundColor(Color.parseColor(mColors[i]));
+            // 设置transitionName属性
             ViewCompat.setTransitionName(view, "color_" + i);
             view.setTag(i);
             view.setOnClickListener(this);
         }
 
-
         setExitSharedElementCallback(new SharedElementCallback() {
-
             @Override
             public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
                 if (exit != enter) {
@@ -61,6 +60,7 @@ public class ShareElementViewPagerActivity extends AppCompatActivity implements 
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(this, ShareElementViewPager2Activity.class);
+        // 指定启动`viewPager`的索引
         intent.putExtra("index", (Integer) v.getTag());
         exit = enter = (int) v.getTag();
         startActivity(intent,
