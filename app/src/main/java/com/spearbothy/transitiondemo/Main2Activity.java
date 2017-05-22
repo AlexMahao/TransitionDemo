@@ -38,6 +38,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.tv_scene).setOnClickListener(this);
         findViewById(R.id.tv_transition_color).setOnClickListener(this);
         findViewById(R.id.tv_behavior).setOnClickListener(this);
+        findViewById(R.id.tv_share_elements_vp).setOnClickListener(this);
         mIntent = new Intent();
     }
 
@@ -81,6 +82,9 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                         , Pair.create(findViewById(R.id.img_share), "share")
                         , Pair.create(findViewById(R.id.tv_share), "share_text"));*/
                 startActivity(mIntent, transitionActivityOptions.toBundle());
+                break;
+            case R.id.tv_share_elements_vp:
+                startActivity(new Intent(this, ShareElementViewPagerActivity.class));
                 break;
             case R.id.tv_reveal:
                 mIntent.setClass(this, RevealActivity.class);

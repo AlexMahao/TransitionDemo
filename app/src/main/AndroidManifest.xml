@@ -33,6 +33,8 @@
         <activity android:name=".transition.SceneActivity"/>
         <activity android:name=".transition.ColorTransitionActivity"/>
         <activity android:name=".behavior.BehaviorActivity"/>
+        <activity android:name=".ShareElementViewPagerActivity"/>
+        <activity android:name=".ShareElementViewPager2Activity"/>
     </application>
 
 </manifest>
