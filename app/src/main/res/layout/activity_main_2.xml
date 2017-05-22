@@ -9,7 +9,69 @@
         android:orientation="vertical"
         android:paddingBottom="16dp"
         android:paddingTop="16dp">
-
+        <LinearLayout
+            android:id="@+id/tv_scene"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/circle_green"
+                android:transitionName="share" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical"
+                android:text="Scene 的使用" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/tv_transition_example"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/circle_green"
+                android:transitionName="share" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical"
+                android:text="transition 的基本使用：延时动画" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/tv_transition_color"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/circle_green"
+                android:transitionName="share" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical"
+                android:text="自定义transition 改变颜色" />
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/tv_explode_transition"
             android:layout_width="match_parent"
@@ -179,70 +241,6 @@
                 android:layout_marginLeft="12dp"
                 android:gravity="center_vertical"
                 android:text="饿了么首页搜索框切换动画" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/tv_transition_example"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:orientation="horizontal"
-            android:paddingLeft="16dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/circle_green"
-                android:transitionName="share" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp"
-                android:gravity="center_vertical"
-                android:text="transition 的基本使用" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/tv_scene"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:orientation="horizontal"
-            android:paddingLeft="16dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/circle_green"
-                android:transitionName="share" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp"
-                android:gravity="center_vertical"
-                android:text="Scene 的使用" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/tv_transition_color"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:orientation="horizontal"
-            android:paddingLeft="16dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/circle_green"
-                android:transitionName="share" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="12dp"
-                android:gravity="center_vertical"
-                android:text="自定义transition 改变颜色" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/tv_behavior"

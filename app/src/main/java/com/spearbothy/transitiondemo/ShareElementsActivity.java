@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 /**
  * Created by mahao on 17-5-15.
  */
-
 public class ShareElementsActivity extends AppCompatActivity {
 
     @Override
@@ -19,6 +18,5 @@ public class ShareElementsActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.framelayout_container, sharedElementFragment1)
                 .commit();
-
     }
 }

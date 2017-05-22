@@ -38,16 +38,24 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         findViewById(R.id.tv_scene).setOnClickListener(this);
         findViewById(R.id.tv_transition_color).setOnClickListener(this);
         findViewById(R.id.tv_behavior).setOnClickListener(this);
-
         mIntent = new Intent();
-        // 退出动画
-        //getWindow().setExitTransition(TransitionInflater.from(this).inflateTransition(R.transition.slide));
     }
 
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tv_scene:
+                //  基本的Transition动画
+                startActivity(new Intent(this, SceneActivity.class));
+                break;
+            case R.id.tv_transition_example:
+                // 延时动画
+                startActivity(new Intent(this, TransitionExampleActivity.class));
+                break;
+            case R.id.tv_transition_color:
+                startActivity(new Intent(this, ColorTransitionActivity.class));
+                break;
             case R.id.tv_explode_transition:
                 mIntent.setClass(this, TransitionActivity.class);
                 mIntent.putExtra("transition", "explode");
@@ -65,7 +73,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.tv_share_elements:
                 mIntent.setClass(this, ShareElementsActivity.class);
-                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(Main2Activity.this
+                ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(this
                         , Pair.create(findViewById(R.id.img_share), "share")
                         , Pair.create(findViewById(R.id.tv_share), "share_text"));
               /*  //5.0以下兼容
@@ -87,15 +95,6 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.tv_ele_search:
                 startActivity(new Intent(this, EleMainActivity.class));
-                break;
-            case R.id.tv_transition_example:
-                startActivity(new Intent(this, TransitionExampleActivity.class));
-                break;
-            case R.id.tv_scene:
-                startActivity(new Intent(this, SceneActivity.class));
-                break;
-            case R.id.tv_transition_color:
-                startActivity(new Intent(this, ColorTransitionActivity.class));
                 break;
             case R.id.tv_behavior:
                 startActivity(new Intent(this, BehaviorActivity.class));

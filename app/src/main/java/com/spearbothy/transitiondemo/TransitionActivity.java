@@ -54,5 +54,4 @@ public class TransitionActivity extends AppCompatActivity {
                 break;
         }
     }
-
 }

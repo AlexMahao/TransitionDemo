@@ -3,12 +3,8 @@ package com.spearbothy.transitiondemo.transition;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.ChangeBounds;
-import android.transition.Explode;
-import android.transition.Fade;
 import android.transition.Scene;
-import android.transition.Slide;
 import android.transition.TransitionManager;
-import android.transition.TransitionSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
@@ -64,7 +60,7 @@ public class SceneActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_scene);
         rootView = (FrameLayout) findViewById(R.id.rootView);
     }
 

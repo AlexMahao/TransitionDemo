@@ -27,21 +27,17 @@ public class ShareElementsFragment1 extends Fragment {
             public void onClick(View view) {
                 Slide slideTransition = new Slide(Gravity.LEFT);
                 slideTransition.setDuration(1000L);
-                /*changeBounds - 改变目标视图的布局边界
-
-                changeClipBounds - 裁剪目标视图边界
-
-                changeTransform - 改变目标视图的缩放比例和旋转角度
-
-                changeImageTransform - 改变目标图片的大小和缩放比例*/
+                sharedElementFragment2.setEnterTransition(slideTransition);
+                // 声明共享元素过渡效果
                 ChangeBounds changeBoundsTransition = new ChangeBounds();
                 changeBoundsTransition.setDuration(1000L);
-
-                sharedElementFragment2.setEnterTransition(slideTransition);
+                // 设置过渡效果
                 sharedElementFragment2.setSharedElementEnterTransition(changeBoundsTransition);
+                // 切换fragment
                 getFragmentManager().beginTransaction()
                         .replace(R.id.framelayout_container, sharedElementFragment2)
                         .addToBackStack(null)
+                        // 添加共享元素
                         .addSharedElement(sharedView, "share")
                         .commit();
             }

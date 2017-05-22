@@ -57,8 +57,9 @@ public class TransitionExampleActivity extends AppCompatActivity implements View
 
     @Override
     public void onClick(View v) {
+        // 启动延时动画
         TransitionManager.beginDelayedTransition(mRootView, new Explode());
-
+        // 切换控件的状态
         toggleVisibility(mRedBoxView, mBlueBoxView, mBlackBoxView, mYellowBoxView);
     }
 
