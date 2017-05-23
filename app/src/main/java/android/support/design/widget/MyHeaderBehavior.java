@@ -123,6 +123,7 @@ public class MyHeaderBehavior extends ViewOffsetBehavior {
         return super.onInterceptTouchEvent(parent, child, ev);
     }
 
+    
     @Override
     public boolean onTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
         return super.onTouchEvent(parent, child, ev);
