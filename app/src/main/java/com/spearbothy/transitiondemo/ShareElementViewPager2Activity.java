@@ -66,10 +66,21 @@ public class ShareElementViewPager2Activity extends AppCompatActivity {
         });
 
     }
+    //初始化Views ，并设置transitionName
+    public void initViews() {
+        for (int i = 0; i < mColors.length; i++) {
+            View view = new ImageView(this);
+            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            view.setLayoutParams(params);
+            view.setBackgroundColor(Color.parseColor(mColors[i]));
+            ViewCompat.setTransitionName(view, "color_" + i);
+            mImageViews.add(view);
+        }
+    }
 
     @Override
     public void finishAfterTransition() {
-        // 更新共享元素数据。设置对应回调
+        // 更新共享元素数据。设置对应回调  Api 21
         setSharedElementCallback(mImageViews.get(mViewPager.getCurrentItem()));
         super.finishAfterTransition();
     }
@@ -91,23 +102,13 @@ public class ShareElementViewPager2Activity extends AppCompatActivity {
                 new ViewTreeObserver.OnPreDrawListener() {
                     @Override
                     public boolean onPreDraw() {
-                        //启动动画
+                        //移除监听
                         sharedElement.getViewTreeObserver().removeOnPreDrawListener(this);
+                        // 启动进入动画
                         startPostponedEnterTransition();
                         return true;
                     }
                 });
-    }
-
-    public void initViews() {
-        for (int i = 0; i < mColors.length; i++) {
-            View view = new ImageView(this);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-            view.setLayoutParams(params);
-            view.setBackgroundColor(Color.parseColor(mColors[i]));
-            ViewCompat.setTransitionName(view, "color_" + i);
-            mImageViews.add(view);
-        }
     }
 
 

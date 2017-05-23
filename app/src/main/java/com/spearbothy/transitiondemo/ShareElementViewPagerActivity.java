@@ -24,9 +24,9 @@ public class ShareElementViewPagerActivity extends AppCompatActivity implements 
 
     private String[] mColors = {"#ff0000", "#0000ff", "#000000", "#ffff00"};
 
-    private static int enter = 0;
+    private static int enter = 0; // 第二个页面进入时的共享元素
 
-    public static int exit = 0;
+    public static int exit = 0; // 第二个页面退出的共享元素索引
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,11 +42,13 @@ public class ShareElementViewPagerActivity extends AppCompatActivity implements 
             view.setTag(i);
             view.setOnClickListener(this);
         }
-
+        // 监听回调
         setExitSharedElementCallback(new SharedElementCallback() {
             @Override
             public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
+                // 该回调在列表页进入和退出时都会回调，所以需要加上判断条件
                 if (exit != enter) {
+                    // 更新共享元素
                     names.clear();
                     sharedElements.clear();
                     View view = mRootView.getChildAt(exit);
@@ -62,6 +64,7 @@ public class ShareElementViewPagerActivity extends AppCompatActivity implements 
         Intent intent = new Intent(this, ShareElementViewPager2Activity.class);
         // 指定启动`viewPager`的索引
         intent.putExtra("index", (Integer) v.getTag());
+        // 更新对应索引表
         exit = enter = (int) v.getTag();
         startActivity(intent,
                 ActivityOptions.makeSceneTransitionAnimation(this, v, v.getTransitionName()).toBundle()
