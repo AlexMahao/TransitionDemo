@@ -41,12 +41,16 @@
             android:gravity="center"
             android:text="tab" />
     </FrameLayout>
-
+<android.support.v4.widget.SwipeRefreshLayout
+    android:id="@+id/refresh_layout"
+    app:layout_behavior="@string/content_behavior"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:background="#fff"
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/content_behavior" />
-
+        />
+</android.support.v4.widget.SwipeRefreshLayout>
 </android.support.design.widget.CoordinatorLayout>

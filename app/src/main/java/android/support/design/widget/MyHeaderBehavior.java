@@ -3,6 +3,7 @@ package android.support.design.widget;
 import android.content.Context;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.OverScroller;
@@ -23,6 +24,8 @@ public class MyHeaderBehavior extends ViewOffsetBehavior {
 
 
     private boolean isClose = false;
+    private CoordinatorLayout mParent;
+    private View mChild;
 
 
     public MyHeaderBehavior() {
@@ -40,11 +43,14 @@ public class MyHeaderBehavior extends ViewOffsetBehavior {
     @Override
     protected void layoutChild(CoordinatorLayout parent, View child, int layoutDirection) {
         super.layoutChild(parent, child, layoutDirection);
+        mParent = parent;
+        mChild = child;
     }
 
     @Override
     public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child, View directTargetChild, View target, int nestedScrollAxes) {
-        return (nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL) && canScroll(child, 0);
+        // 边界条件
+        return (nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL) && canScroll(child, 0) && !isClose;
     }
 
 
@@ -54,8 +60,19 @@ public class MyHeaderBehavior extends ViewOffsetBehavior {
         if (pendingTranslationY >= getHeaderOffsetRange() && pendingTranslationY <= 0) {
             return true;
         }
-
         return false;
+    }
+
+    public boolean isClose() {
+        return isClose;
+    }
+
+    public void openPager() {
+        isClose = false;
+        mChild.animate()
+                .translationY(0)
+                .setDuration(500)
+                .start();
     }
 
 
@@ -66,42 +83,27 @@ public class MyHeaderBehavior extends ViewOffsetBehavior {
 
     @Override
     public boolean onNestedPreFling(CoordinatorLayout coordinatorLayout, View child, View target, float velocityX, float velocityY) {
+        Log.i("info", "onNestedPreFling");
+        return true;
+    }
+
+    @Override
+    public boolean onNestedFling(CoordinatorLayout coordinatorLayout, View child, View target, float velocityX, float velocityY, boolean consumed) {
         return true;
     }
 
     @Override
     public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dx, int dy, int[] consumed) {
         //dy>0 scroll up;dy<0,scroll down 向下滚动  dy<0
-        int consumedY = 0;
-        int currentTransitionY = (int) child.getTranslationY();
-        if (dy > 0 && currentTransitionY > getHeaderOffsetRange()) {
-            isClose = false;
-            consumedY = currentTransitionY - getHeaderOffsetRange() >= dy ? dy : currentTransitionY - getHeaderOffsetRange();
-        }
-        child.setTranslationY(child.getTranslationY() - consumedY / 4.0f);
-        consumed[1] = consumedY;
-
-        /*float halfOfDis = dy / 4.0f; //消费掉其中的4分之1，不至于滑动效果太灵敏
+        float halfOfDis = dy / 4.0f; //消费掉其中的4分之1，不至于滑动效果太灵敏
         if (!canScroll(child, halfOfDis)) {
             child.setTranslationY(halfOfDis > 0 ? getHeaderOffsetRange() : 0);
         } else {
             child.setTranslationY(child.getTranslationY() - halfOfDis);
         }
         //只要开始拦截，就需要把所有Scroll事件消费掉
-        consumed[1] = dy;*/
+        consumed[1] = dy;
     }
-
-    @Override
-    public void onNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
-        int consumedY = 0;
-        int currentTransitionY = (int) child.getTranslationY();
-        if (dyUnconsumed < 0) {
-            isClose = false;
-            consumedY = currentTransitionY >= dyUnconsumed ? currentTransitionY : dyUnconsumed;
-        }
-        child.setTranslationY(child.getTranslationY() - consumedY / 4.0f);
-    }
-
 
 /*    public boolean isClosed() {
         return mCurState == STATE_CLOSED;
@@ -113,21 +115,12 @@ public class MyHeaderBehavior extends ViewOffsetBehavior {
         }
     }*/
 
-
-
     @Override
-    public boolean onInterceptTouchEvent(CoordinatorLayout parent, final View child, MotionEvent ev) {
-        if (ev.getAction() == MotionEvent.ACTION_UP && !isClose) {
-            handleActionUp(parent, child);
-        }
-        return super.onInterceptTouchEvent(parent, child, ev);
+    public void onStopNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target) {
+        super.onStopNestedScroll(coordinatorLayout, child, target);
+        handleActionUp(coordinatorLayout, child);
     }
 
-    
-    @Override
-    public boolean onTouchEvent(CoordinatorLayout parent, View child, MotionEvent ev) {
-        return super.onTouchEvent(parent, child, ev);
-    }
 
     private void handleActionUp(CoordinatorLayout parent, final View child) {
         if (mFlingRunnable != null) {
@@ -148,7 +141,9 @@ public class MyHeaderBehavior extends ViewOffsetBehavior {
     //结束动画的时候调用，并改变状态
     private void onFlingFinished(CoordinatorLayout coordinatorLayout, View layout) {
         if (layout.getTranslationY() == getHeaderOffsetRange()) {
-            //isClose = true;
+            isClose = true;
+        } else {
+            isClose = false;
         }
     }
 
