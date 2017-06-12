@@ -5,17 +5,14 @@ import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Transition;
 import android.transition.TransitionManager;
 import android.transition.TransitionValues;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 
 import com.spearbothy.transitiondemo.R;
 
@@ -26,17 +23,13 @@ import com.spearbothy.transitiondemo.R;
 public class ColorTransitionActivity extends AppCompatActivity implements View.OnClickListener {
 
     private View mColorView;
-
     private String mColor[] = {"#FF00FF", "#FFFF00", "#FF0000"};
-
     private int mNum = 0;
     private ViewGroup mRootView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_transition_color);
 
         mColorView = findViewById(R.id.color_view);
@@ -44,8 +37,6 @@ public class ColorTransitionActivity extends AppCompatActivity implements View.O
 
         mRootView = (ViewGroup) findViewById(R.id.root_view);
     }
-
-
 
     @Override
     public void onClick(View v) {
@@ -55,12 +46,9 @@ public class ColorTransitionActivity extends AppCompatActivity implements View.O
     }
 
 
-
     public static class ColorChangeTransition extends Transition {
-
         // key
         private static final String PROPNAME_BACKGROUND = "colorchangetransition:change_color:background";
-
 
         @Override
         public void captureStartValues(TransitionValues transitionValues) {
@@ -76,7 +64,6 @@ public class ColorTransitionActivity extends AppCompatActivity implements View.O
             View view = values.view;
             // 保存对应的状态
             values.values.put(PROPNAME_BACKGROUND, ((ColorDrawable) values.view.getBackground()).getColor());
-
         }
 
         @Override
@@ -86,7 +73,6 @@ public class ColorTransitionActivity extends AppCompatActivity implements View.O
                 captureValues(transitionValues);
             }
         }
-
 
         @Override
         public Animator createAnimator(ViewGroup sceneRoot, TransitionValues startValues, TransitionValues endValues) {
@@ -127,6 +113,4 @@ public class ColorTransitionActivity extends AppCompatActivity implements View.O
             };
         }
     }
-
-
 }

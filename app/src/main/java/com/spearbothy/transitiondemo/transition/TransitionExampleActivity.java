@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
-import android.transition.Fade;
-import android.transition.Scene;
-import android.transition.Slide;
 import android.transition.TransitionManager;
 import android.view.View;
 import android.widget.GridLayout;
@@ -23,13 +20,13 @@ import com.spearbothy.transitiondemo.R;
  * createAnimator()  ： 根据开始和结束状态的值创建合适的动画集合
  * <p>
  * <p>
- *
- *      Window.FEATURE_ACTIVITY_TRANSITIONS
- *
- *       ActivityOptions.makeSceneTransitionAnimation(activity, pairs).toBundle();
- *
- *       finishAfterTransition()
- *
+ * <p>
+ * Window.FEATURE_ACTIVITY_TRANSITIONS
+ * <p>
+ * ActivityOptions.makeSceneTransitionAnimation(activity, pairs).toBundle();
+ * <p>
+ * finishAfterTransition()
+ * <p>
  * Created by mahao on 17-5-17.
  */
 public class TransitionExampleActivity extends AppCompatActivity implements View.OnClickListener {

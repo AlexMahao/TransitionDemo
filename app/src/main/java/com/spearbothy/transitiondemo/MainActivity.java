@@ -19,14 +19,14 @@ import com.spearbothy.transitiondemo.transition.TransitionExampleActivity;
  * Created by mahao on 17-5-15.
  */
 
-public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Intent mIntent;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_2);
+        setContentView(R.layout.activity_main);
         findViewById(R.id.tv_explode_transition).setOnClickListener(this);
         findViewById(R.id.tv_slide_transition).setOnClickListener(this);
         findViewById(R.id.tv_fade_transition).setOnClickListener(this);

@@ -5,12 +5,9 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
-import android.net.wifi.WifiConfiguration;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Transition;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -39,12 +36,7 @@ public class EleSearchActivity extends AppCompatActivity {
     private EditText mEditText;
 
     private int originViewLeft;
-    private int originViewTop;
-    private int originViewWidth;
-    private int originViewHeight;
-    private int deltaX, deltaY;
-    private float scaleX, scaleY;
-
+    private int deltaX;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,28 +49,15 @@ public class EleSearchActivity extends AppCompatActivity {
         mFrameView = findViewById(R.id.frame_bg);
         mEditText = (EditText) findViewById(R.id.input);
 
-
-
         mEditText.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 mEditText.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                //EleMainActivity.activity.hide();
                 prepareScene();
-
                 performEnterAnimation();
             }
         });
-
-        //getWindow().getDecorView().getViewTreeObserver().
     }
-
-   /* @Override
-    public void onEnterAnimationComplete() {
-        super.onEnterAnimationComplete();
-        EleMainActivity.activity.hide();
-    }*/
-
 
     /**
      * 准备动画
@@ -93,9 +72,6 @@ public class EleSearchActivity extends AppCompatActivity {
         //移动到起始view位置
         deltaX = originViewLeft - screenLocation[0] + (int) dp2px(35);
         mEditText.setTranslationX(deltaX); // x 位置*/
-
-       // mFrameView.setBackgroundColor(Color.parseColor("#000096FF"));
-
     }
 
     private void performEnterAnimation() {
@@ -127,7 +103,7 @@ public class EleSearchActivity extends AppCompatActivity {
         alphaVa.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                if (((Float) valueAnimator.getAnimatedValue())>0f){
+                if (((Float) valueAnimator.getAnimatedValue()) > 0f) {
                     EleMainActivity.activity.hide();
                 }
                 mContentFrame.setAlpha((Float) valueAnimator.getAnimatedValue());
@@ -227,5 +203,4 @@ public class EleSearchActivity extends AppCompatActivity {
         scaleVa.start();
         contentAnim.start();
     }
-
 }

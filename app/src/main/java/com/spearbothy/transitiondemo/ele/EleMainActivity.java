@@ -15,9 +15,7 @@ import com.spearbothy.transitiondemo.R;
 public class EleMainActivity extends AppCompatActivity {
 
     public static final String VIEW_INFO_EXTRA = "VIEW_INFO_EXTRA";
-
     private View mSearchBgVIew;
-
     public static EleMainActivity activity;
     private View mInputView;
 
@@ -50,7 +48,6 @@ public class EleMainActivity extends AppCompatActivity {
     }
 
     public void hide() {
-//        mSearchBgVIew.setBackground(null);
         mSearchBgVIew.setVisibility(View.GONE);
     }
 
@@ -58,4 +55,9 @@ public class EleMainActivity extends AppCompatActivity {
         mSearchBgVIew.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        activity = null;
+    }
 }

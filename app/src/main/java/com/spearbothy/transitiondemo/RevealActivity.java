@@ -49,14 +49,10 @@ public class RevealActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onAnimationCancel(Animator animator) {
-
-                        }
+                        public void onAnimationCancel(Animator animator) {}
 
                         @Override
-                        public void onAnimationRepeat(Animator animator) {
-
-                        }
+                        public void onAnimationRepeat(Animator animator) {}
                     });
                     anim.start();
                 }
@@ -71,9 +67,7 @@ public class RevealActivity extends AppCompatActivity {
         getWindow().setEnterTransition(explode);
         explode.addListener(new Transition.TransitionListener() {
             @Override
-            public void onTransitionStart(Transition transition) {
-
-            }
+            public void onTransitionStart(Transition transition) {}
 
             @Override
             public void onTransitionEnd(Transition transition) {
@@ -84,19 +78,13 @@ public class RevealActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onTransitionCancel(Transition transition) {
-
-            }
+            public void onTransitionCancel(Transition transition) {}
 
             @Override
-            public void onTransitionPause(Transition transition) {
-
-            }
+            public void onTransitionPause(Transition transition) {}
 
             @Override
-            public void onTransitionResume(Transition transition) {
-
-            }
+            public void onTransitionResume(Transition transition) {}
         });
     }
 }
