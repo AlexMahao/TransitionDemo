@@ -159,8 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/circle_orange"
-                android:transitionName="share" />
+                android:background="@drawable/circle_orange" />
             <TextView
                 android:id="@+id/tv_share"
                 android:layout_width="wrap_content"
@@ -168,8 +167,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="12dp"
                 android:gravity="center_vertical"
-                android:text="Shared Elements"
-                android:transitionName="share_text" />
+                android:text="Shared Elements"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/tv_share_elements_vp"

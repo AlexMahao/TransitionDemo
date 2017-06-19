@@ -39,6 +39,7 @@ public class ShareElementViewPagerActivity extends AppCompatActivity implements 
             view.setBackgroundColor(Color.parseColor(mColors[i]));
             // 设置transitionName属性
             ViewCompat.setTransitionName(view, "color_" + i);
+            // transition = "color_1|2|3|4"
             view.setTag(i);
             view.setOnClickListener(this);
         }

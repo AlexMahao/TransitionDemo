@@ -7,6 +7,7 @@ import android.transition.Scene;
 import android.transition.TransitionManager;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.spearbothy.transitiondemo.R;
 
@@ -49,7 +50,7 @@ import com.spearbothy.transitiondemo.R;
  * MATCH_ITEM_ID, // ListView 的item id
  * };
  */
-public class SceneActivity extends AppCompatActivity {
+public class SceneActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FrameLayout rootView;
 
@@ -58,13 +59,26 @@ public class SceneActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scene);
         rootView = (FrameLayout) findViewById(R.id.rootView);
+        // 重新加载布局
+        findViewById(R.id.image1).setOnClickListener(this);
+        findViewById(R.id.image2).setOnClickListener(this);
+        findViewById(R.id.image3).setOnClickListener(this);
+
 //        Transition mFadeTransition = TransitionInflater.from(this).inflateTransition(R.transition.fade_transition);
     }
 
     public void begin(View view) {
+        // 加载场景
         Scene scene2 = Scene.getSceneForLayout(rootView, R.layout.scene2, this);
+        // Transition
         ChangeBounds changeBounds = new ChangeBounds();
-        changeBounds.addTarget(R.id.image2);
+//        changeBounds.addTarget(R.id.image2);
+        // 启动动画
         TransitionManager.go(scene2, changeBounds);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
     }
 }
